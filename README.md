@@ -1,2 +1,2 @@
-# doc-manage-app
-Python web application to manage document files.
+# doc-manage-app | Document Management Application
+Python web application - Django based - to manage document files.
