@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .forms import UserLoginForm
 from django.contrib.auth import login, logout
 from django.urls import reverse
+from django.http import HttpResponseRedirect
 
 def login_view(request):
     next = request.GET.get('next', reverse('login'))
@@ -17,4 +18,8 @@ def login_view(request):
         'form': form,
         'next': next,
     }
-    return render(request, 'initial/login.html', context=context) 
+    return render(request, 'initial/login.html', context=context)
+
+def logout_view(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('login'))
