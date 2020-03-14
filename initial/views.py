@@ -1,3 +1,20 @@
 from django.shortcuts import render
+from .forms import UserLoginForm
+from django.contrib.auth import login, logout
+from django.urls import reverse
 
-# Create your views here.
+def login_view(request):
+    next = request.GET.get('next', reverse('login'))
+    form = UserLoginForm()
+    if request.method == 'POST':
+        form = UserLoginForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            next = request.POST.get('next', reverse('login'))
+            return HttpResponseRedirect(next)
+    context = {
+        'form': form,
+        'next': next,
+    }
+    return render(request, 'initial/login.html', context=context) 
