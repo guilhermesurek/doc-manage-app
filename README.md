@@ -37,3 +37,6 @@ Documentation: https://docs.djangoproject.com/en/3.0/
 ### Test environment
 - Create a test environment to test interface
 - Create a test environment to test database
+
+### References and Credits
+- Vitor Freitas - https://github.com/sibtc/django-upload-example
