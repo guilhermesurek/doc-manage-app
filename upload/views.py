@@ -1,14 +1,18 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.core.files.storage import FileSystemStorage
+from .forms import DocumentForm
+from .models import Document
 
 @login_required()
 def upload_view(request):
-    context = {}
     if request.method == 'POST':
-        uploaded_file = request.FILES['document']
-        fs = FileSystemStorage()
-        name = fs.save(uploaded_file.name, uploaded_file)
-        context['name'] = name
-        context['size'] = uploaded_file.size
-    return render(request, 'upload/upload.html', context)
+        form = DocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('download')
+    else:
+        form = DocumentForm()
+    return render(request, 'upload/upload.html', {
+        'form': form
+    })
