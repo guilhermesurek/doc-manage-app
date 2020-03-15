@@ -6,12 +6,12 @@ Documentation: https://docs.djangoproject.com/en/3.0/
 
 ## Website structure
 
-.
-├── Login
-|   ├── Menu
-|   ├── Upload
-|   ├── Download
-└── Logout
+    .
+    ├── Login
+    |   ├── Menu
+    |   ├── Upload
+    |   ├── Download
+    └── Logout
 
 
 ## Future Features
