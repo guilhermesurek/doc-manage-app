@@ -1,0 +1,20 @@
+{% extends 'base.html'%}
+
+{% block title%}
+    Menu
+{% endblock %}
+
+{% block content %}
+
+    <h1>Menu</h1>
+
+    <fieldset>
+        <legend>Lista de Opções</legend>
+        <ul>
+            {% for opt in menu_options %}
+                <li>{{opt.name}} {{opt.url}}</li>
+            {% endfor %}
+        </ul>
+    </fieldset>
+
+{% endblock %}

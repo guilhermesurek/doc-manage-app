@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from initial.views import login_view, logout_view
+from menu.views import menu_view
+from upload.views import upload_view
+from download.views import download_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', login_view, name='login'),
     path('logout', logout_view, name='logout'),
+    path('menu', menu_view, name='menu'),
+    path('upload', upload_view, name='upload'),
+    path('download', download_view, name='download'),
 ]
