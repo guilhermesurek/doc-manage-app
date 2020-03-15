@@ -129,4 +129,26 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
+# Login and logout
+
 LOGIN_URL = '/'
+#LOGIN_REDIRECT_URL = 
+#LOGOUT_REDIRECT_URL = 
+#PASSWORD_RESET_TIMEOUT_DAYS = 3
+
+
+# Upload and data transfer
+
+DATA_UPLOAD_MAX_MEMORY_SIZE = 2621440 # (2.5 MB)
+FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440 # (2.5 MB)
+#FILE_UPLOAD_TEMP_DIR = None
+#FILE_UPLOAD_HANDLERS = [
+#   'django.core.files.uploadhandler.MemoryFileUploadHandler',
+#   'django.core.files.uploadhandler.TemporaryFileUploadHandler',
+#]
+
+# Number format
+
+DECIMAL_SEPARATOR = ','
+THOUSAND_SEPARATOR = '.'
+USE_THOUSAND_SEPARATOR = False
