@@ -137,10 +137,15 @@ LOGIN_URL = '/'
 #PASSWORD_RESET_TIMEOUT_DAYS = 3
 
 
-# Upload and data transfer
+# Upload, files and data
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 2621440 # (2.5 MB)
 FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440 # (2.5 MB)
+
+#DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 #FILE_UPLOAD_TEMP_DIR = None
 #FILE_UPLOAD_HANDLERS = [
 #   'django.core.files.uploadhandler.MemoryFileUploadHandler',

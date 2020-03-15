@@ -30,8 +30,9 @@ Documentation: https://docs.djangoproject.com/en/3.0/
     - CNPJ remetente
     - Numero do documento
     - Chave do documento
--  MemoryFileUploadHandler and TemporaryFileUploadHandler in the django.core.files.uploadhandler
+- MemoryFileUploadHandler and TemporaryFileUploadHandler in the django.core.files.uploadhandler
 - For custom upload handlers: django.core.files.uploadhandler.FileUploadHandler
+- Use cloud services to storage uploaded files https://docs.djangoproject.com/en/3.0/ref/files/storage/
 
 ### Test environment
 - Create a test environment to test interface
