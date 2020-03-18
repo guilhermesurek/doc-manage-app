@@ -86,11 +86,10 @@ WSGI_APPLICATION = 'docmanageapp.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'docmanageapp',
-        'USER': 'pgdocmanageapp@pgdocmanageapp', #'postgres',
-        'PASSWORD': data_base_password(), 
-        'HOST': 'pgdocmanageapp.postgres.database.azure.com', #'localhost',
-        'PORT': '5432',
+        'NAME': os.environ['DBNAME'],
+        'USER': os.environ['DBUSER'],
+        'PASSWORD': os.environ['DBPASS'],
+        'HOST': os.environ['DBHOST'],
     }
 }
 
