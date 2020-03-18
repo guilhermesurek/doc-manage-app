@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
         <link rel="stylesheet" type="text/css" href="{% static 'css/app.css' %}">
-        <title>{% block title %}My Site{% endblock %}</title>
+        <title>{% block title %}Gestão Documental{% endblock %}</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#decdc3">
@@ -18,6 +18,9 @@
               <ul class="navbar-nav">
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'login' %}">Entrar</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'menu' %}">Menu</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'upload' %}">Upload</a>

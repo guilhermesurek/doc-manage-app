@@ -13,6 +13,8 @@ def login_view(request):
             user = form.save()
             login(request, user)
             next = request.POST.get('next', reverse('login'))
+            if next == reverse('login'):
+                next = reverse('menu')
             return HttpResponseRedirect(next)
     context = {
         'form': form,
