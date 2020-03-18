@@ -136,3 +136,7 @@ secret.py
 
 # Media
 media/
+
+# Production and Dev Settings
+prod.env
+dev.env

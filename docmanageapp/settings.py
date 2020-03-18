@@ -26,8 +26,8 @@ SECRET_KEY = django_secret_key()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ['docmanageapp'] + '.azurewebsites.net', '127.0.0.1'] if 'docmanageapp' in os.environ else []
 
 # Application definition
 
@@ -86,9 +86,9 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'docmanageapp',
-        'USER': 'postgres',
+        'USER': 'pgdocmanageapp@pgdocmanageapp', #'postgres',
         'PASSWORD': data_base_password(), 
-        'HOST': 'localhost',
+        'HOST': 'pgdocmanageapp.postgres.database.azure.com', #'localhost',
         'PORT': '5432',
     }
 }
