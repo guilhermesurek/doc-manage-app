@@ -25,8 +25,8 @@ SECRET_KEY = os.environ['DJANGOSECRET']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
-#ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1', 'localhost'] if 'WEBSITE_SITE_NAME' in os.environ else []
+#ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [os.environ['WEBSITESITENAME'] + '.azurewebsites.net', '127.0.0.1', 'localhost'] if 'WEBSITESITENAME' in os.environ else []
 
 # Application definition
 
