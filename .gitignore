@@ -133,9 +133,3 @@ dmypy.json
 
 # Secret
 secret.py
-
-# Media
-media/
-
-# Static files
-staticfiles/
