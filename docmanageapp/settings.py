@@ -25,8 +25,8 @@ SECRET_KEY = os.environ['DJANGOSECRET']
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-#ALLOWED_HOSTS = []
-ALLOWED_HOSTS = [os.environ['docmanageapp'] + '.azurewebsites.net', '127.0.0.1'] if 'docmanageapp' in os.environ else []
+ALLOWED_HOSTS = ['*']
+#ALLOWED_HOSTS = [os.environ['WEBSITE_SITE_NAME'] + '.azurewebsites.net', '127.0.0.1', 'localhost'] if 'WEBSITE_SITE_NAME' in os.environ else []
 
 # Application definition
 
@@ -130,8 +130,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Login and logout
 
@@ -161,3 +161,36 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440 # (2.5 MB)
 DECIMAL_SEPARATOR = ','
 THOUSAND_SEPARATOR = '.'
 USE_THOUSAND_SEPARATOR = False
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format' : "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt' : "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'mysite.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers':['file'],
+            'propagate': True,
+            'level':'DEBUG',
+        },
+        'MYAPP': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}
