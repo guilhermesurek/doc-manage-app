@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'upload',
     'download',
     'crispy_forms',
+    'storages',
 ]
 
 # Crispy Forms
@@ -55,7 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'docmanageapp.urls'
@@ -129,9 +130,9 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+#STATIC_URL = '/static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+#STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Login and logout
 
@@ -143,8 +144,8 @@ LOGIN_URL = '/login'
 
 # Upload, files and data
 
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
+#MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+#MEDIA_URL = '/media/'
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 2621440 # (2.5 MB)
 FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440 # (2.5 MB)
@@ -161,6 +162,18 @@ FILE_UPLOAD_MAX_MEMORY_SIZE = 2621440 # (2.5 MB)
 DECIMAL_SEPARATOR = ','
 THOUSAND_SEPARATOR = '.'
 USE_THOUSAND_SEPARATOR = False
+
+# Azure Storage Settings
+DEFAULT_FILE_STORAGE = 'docmanageapp.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE = 'docmanageapp.custom_azure.AzureStaticStorage'
+
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
+AZURE_ACCOUNT_NAME = os.environ['AZURESTORAGEACCOUNT']
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
 
 LOGGING = {
     'version': 1,
