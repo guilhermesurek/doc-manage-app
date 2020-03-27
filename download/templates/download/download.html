@@ -1,24 +1,40 @@
 {% extends 'base.html' %}
 
-{% load crispy_forms_tags %}
+{% block title%}
+  Download
+{% endblock %}
 
 {% block content %}
-  <h2>Download Documents</h2>
+  <h2>Download de Documentos</h2>
     
     <fieldset>
-        <table style="width:100%">
+        <table style="width:100%" id="documents">
+          <thead>
             <tr>
-              <th>Firstname</th>
-              <th>Lastname</th>
-              <th>Age</th>
+              <th>CNPJ emissor</th>
+              <th>CNPJ destinatário</th>
+              <th>Número do documento</th>
+              <th>Chave do documento</th>
+              <th>Data de emissão</th>
+              <th>Download</th>
             </tr>
+          </thead>
+          <tbody>
             {% for doc in docs %}
-            <tr>
-              <td>Jill</td>
-              <td>Smith</td>
-              <td>50</td>
-            </tr>
+              <tr>
+                <td>{{doc.cnpj_sender}}</td>
+                <td>{{doc.cnpj_recipient}}</td>
+                <td>{{doc.document_number}}</td>
+                <td>{{doc.document_key}}</td>
+                <td>{{doc.document_date}}</td>
+                <td>
+                  <a href="{{ doc.doc_file.url }}" class="btn btn-primary btn-sm" target="_blank">
+                    Download
+                  </a>
+                </td>
+              </tr>
             {% endfor %}
-          </table>
+          </tbody>
+        </table>
     </fieldset>
 {% endblock %}

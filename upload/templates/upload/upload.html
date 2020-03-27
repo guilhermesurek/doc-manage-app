@@ -2,8 +2,12 @@
 
 {% load crispy_forms_tags %}
 
+{% block title%}
+  Upload
+{% endblock %}
+
 {% block content %}
-  <h2>Upload de Documento</h2>
+  <h2>Upload de Documentos</h2>
   <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form|crispy }}
