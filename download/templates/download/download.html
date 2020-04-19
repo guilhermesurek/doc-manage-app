@@ -6,35 +6,35 @@
 
 {% block content %}
   <h2>Download de Documentos</h2>
-    
-    <fieldset>
-        <table style="width:100%" id="documents">
-          <thead>
+    <div class="table-responsive-vertical shadow-z-1">
+      <table id="table" class="table table-hover table-mc-light-blue">
+        <thead>
+          <tr>
+            <th>CNPJ emissor</th>
+            <th>CNPJ destinatário</th>
+            <th>Número do documento</th>
+            <th>Chave do documento</th>
+            <th>Data de emissão</th>
+            <th>Download</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for doc in docs %}
             <tr>
-              <th>CNPJ emissor</th>
-              <th>CNPJ destinatário</th>
-              <th>Número do documento</th>
-              <th>Chave do documento</th>
-              <th>Data de emissão</th>
-              <th>Download</th>
+              <td data-title="cnpj_sender">{{doc.cnpj_sender}}</td>
+              <td data-title="cnpj_recipient">{{doc.cnpj_recipient}}</td>
+              <td data-title="document_number">{{doc.document_number}}</td>
+              <td data-title="document_key">{{doc.document_key}}</td>
+              <td data-title="document_date">{{doc.document_date}}</td>
+              <td>
+                <a href="{{ doc.doc_file.url }}" class="btn btn-primary btn-sm" target="_blank">
+                  Download
+                </a>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {% for doc in docs %}
-              <tr>
-                <td>{{doc.cnpj_sender}}</td>
-                <td>{{doc.cnpj_recipient}}</td>
-                <td>{{doc.document_number}}</td>
-                <td>{{doc.document_key}}</td>
-                <td>{{doc.document_date}}</td>
-                <td>
-                  <a href="{{ doc.doc_file.url }}" class="btn btn-primary btn-sm" target="_blank">
-                    Download
-                  </a>
-                </td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-    </fieldset>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+
 {% endblock %}

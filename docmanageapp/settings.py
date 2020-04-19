@@ -85,11 +85,16 @@ WSGI_APPLICATION = 'docmanageapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'sql_server.pyodbc',
+        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ['DBNAME'],
         'USER': os.environ['DBUSER'],
         'PASSWORD': os.environ['DBPASS'],
         'HOST': os.environ['DBHOST'],
+        'PORT': '1433',
+        'OPTIONS': {
+             'driver': 'ODBC Driver 17 for SQL Server',
+         }
     }
 }
 
