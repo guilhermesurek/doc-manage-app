@@ -30,4 +30,4 @@ class DocumentForm(forms.ModelForm):
     
     class Meta:
         model = Document
-        fields = ('cnpj_sender', 'cnpj_recipient', 'document_number', 'document_key', 'document_date', 'doc_file')
+        fields = ('sender', 'recipient', 'document_number', 'document_key', 'document_date', 'doc_file')
