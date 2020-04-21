@@ -50,6 +50,8 @@ class Document(StdModel):
     document_number = models.CharField("Número do documento", max_length=30)
     document_key = models.CharField("Chave do documento", max_length=44, primary_key=True)
     document_date = models.DateField("Data de emissão")
+    document_total_value = models.FloatField("Valor total do documento")
+    document_status = models.CharField("Status do documento", max_length=5)
     doc_file = models.FileField("Arquivo do documento", upload_to='docs/')
 
     def __str__(self):
