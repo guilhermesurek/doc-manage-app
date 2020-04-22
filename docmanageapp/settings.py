@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['DJANGOSECRET']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 #ALLOWED_HOSTS = ['*']
 ALLOWED_HOSTS = [os.environ['WEBSITESITENAME'] + '.azurewebsites.net', '127.0.0.1', 'localhost'] if 'WEBSITESITENAME' in os.environ else []

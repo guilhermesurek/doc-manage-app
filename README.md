@@ -40,3 +40,4 @@ Documentation: https://docs.djangoproject.com/en/3.0/
 
 ### References and Credits
 - Vitor Freitas - https://github.com/sibtc/django-upload-example
+- Vitor Freitas - https://simpleisbetterthancomplex.com/tutorial/2016/11/22/django-multiple-file-upload-using-ajax.html
