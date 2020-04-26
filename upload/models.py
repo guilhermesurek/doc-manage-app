@@ -1,5 +1,4 @@
 from django.db import models
-
 class StdModel(models.Model):
     date_lastupdated = models.DateField(auto_now=True)
     date_added = models.DateField(auto_now_add=True)
@@ -35,6 +34,11 @@ class Entity(StdModel):
 
     def __str__(self):
         return self.fantasy_name
+    
+    def save(self, *args, **kwargs):
+        if self.fantasy_name == None:
+            self.fantasy_name = self.company_name
+        super(Entity, self).save(*args, **kwargs)
 
     class Meta:
         ordering = ["company_name"]

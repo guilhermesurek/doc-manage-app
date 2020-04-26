@@ -22,7 +22,7 @@ from django.contrib.auth.decorators import login_required
 from initial.views import login_view, logout_view, home_view
 from menu.views import menu_view
 from download.views import download_view
-from upload.views import UploadView
+from upload.views import UploadView, single_upload
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +31,7 @@ urlpatterns = [
     path('logout', logout_view, name='logout'),
     path('menu', menu_view, name='menu'),
     path('upload', login_required(UploadView.as_view()), name='upload'),
+    path('single-upload', single_upload, name='single-upload'),
     path('download', download_view, name='download'),
 ]
 

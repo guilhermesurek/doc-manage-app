@@ -9,7 +9,7 @@
 {% block content %}
   <h2>Carregar Documentos</h2>
   <button type="button" class="btn btn-primary js-upload-docs">
-    <span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+    <span class="glyphicon glyphicon-cloud-upload"></span> Carregar XMLs
   </button>
   <input id="fileupload" type="file" name="doc_file" multiple
         style="display: none;"
@@ -24,7 +24,7 @@
     <tbody>
       {% for doc in docs %}
         <tr>
-          <td><a href="{{ doc.file.url }}">{{ doc.file.name }}</a></td>
+          <td><a href="{{ doc.doc_file.url }}">{{ doc.doc_file.name }}</a></td>
         </tr>
       {% endfor %}
     </tbody>

@@ -4,14 +4,19 @@ import xmltodict
 
 class xml_nfe:
 
-    def __init__(self, xml_file):
-        self.dict_nfe = {}
+    def __init__(self, xml_file=None, dict_nfe=None):
+        if dict_nfe != None:
+            self.dict_nfe = dict_nfe
+        elif xml_file != None:
+            self.dict_nfe = {}
+            self.xml_parser_to_dict(xml_file)
+        else:
+            raise("Missing argument. xml_file or dict_nfe must be informed.")
         self.sender = {}
         self.recipient = {}
         self.carrier = {}
         self.deliver_to = {}
         self.document = {}
-        self.xml_parser_to_dict(xml_file)
         self.extract_fields_from_dict()
 
     def xml_parser_to_dict(self, xml_file):
