@@ -20,8 +20,8 @@ from django.urls import path
 from django.contrib.auth.decorators import login_required
 
 from initial.views import login_view, logout_view, home_view
-from menu.views import menu_view
-from download.views import download_view
+from menu.views import MenuView
+from download.views import DownloadView
 from upload.views import UploadView, single_upload
 
 urlpatterns = [
@@ -29,10 +29,10 @@ urlpatterns = [
     path('', home_view, name='home'),
     path('login', login_view, name='login'),
     path('logout', logout_view, name='logout'),
-    path('menu', menu_view, name='menu'),
+    path('menu', login_required(MenuView.as_view()), name='menu'),
     path('upload', login_required(UploadView.as_view()), name='upload'),
     path('single-upload', single_upload, name='single-upload'),
-    path('download', download_view, name='download'),
+    path('download', login_required(DownloadView.as_view()), name='download'),
 ]
 
 if settings.DEBUG:
