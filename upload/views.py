@@ -10,7 +10,10 @@ from utils.xmlnfe import xml_nfe
 
 class UploadView(View):
     def get(self, request):
-        return render(request, 'upload/upload.html')
+        context = {
+            'upload_page': 'active'
+        }
+        return render(request, 'upload/upload.html', context=context)
 
     def post(self, request):
         form = DocumentForm(request.POST, request.FILES)

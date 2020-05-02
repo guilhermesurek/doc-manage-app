@@ -17,6 +17,7 @@ def login_view(request):
                 next = reverse('menu')
             return HttpResponseRedirect(next)
     context = {
+        'login_page': 'active',
         'form': form,
         'next': next,
     }

@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 class MenuView(View):
     def get(self, request):
         context = {
+            'menu_page': 'active',
             'menu_options': [
                 {
                     'name': 'Upload',
