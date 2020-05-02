@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title%}
   Download
@@ -26,25 +27,6 @@
             <th>Download</th>
           </tr>
         </thead>
-        <tbody>
-          {% for doc in docs %}
-            <tr>
-              <td data-title="name_sender">{{doc.sender.cnpj}}</td>
-              <td data-title="cnpj_sender">{{doc.sender.fantasy_name}}</td>
-              <td data-title="name_recipient">{{doc.recipient.cnpj}}</td>
-              <td data-title="cnpj_recipient">{{doc.recipient.fantasy_name}}</td>
-              <td data-title="document_number">{{doc.document_number}}</td>
-              <td data-title="document_key">{{doc.document_key}}</td>
-              <td data-title="document_date">{{doc.document_date}}</td>
-              <td data-title="document_total_value">{{doc.document_total_value}}</td>
-              <td>
-                <a href="{{ doc.doc_file.url }}" class="btn btn-primary btn-sm" target="_blank">
-                  Download
-                </a>
-              </td>
-            </tr>
-          {% endfor %}
-        </tbody>
       </table>
     </div>
 
@@ -52,4 +34,5 @@
 {% block footer_javascript_page %}
   <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+  <script src="{% static 'download/js/data-table.js' %}"></script>
 {% endblock footer_javascript_page %}

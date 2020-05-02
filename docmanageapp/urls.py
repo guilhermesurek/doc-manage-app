@@ -21,7 +21,7 @@ from django.contrib.auth.decorators import login_required
 
 from initial.views import login_view, logout_view, home_view
 from menu.views import MenuView
-from download.views import DownloadView
+from download.views import DownloadView, DownloadTableView, document_json
 from upload.views import UploadView, single_upload
 
 urlpatterns = [
@@ -33,6 +33,8 @@ urlpatterns = [
     path('upload', login_required(UploadView.as_view()), name='upload'),
     path('single-upload', single_upload, name='single-upload'),
     path('download', login_required(DownloadView.as_view()), name='download'),
+    path('download-table', login_required(DownloadTableView.as_view()), name='download_table'),
+    path('document/json/', document_json, name='doc_json'),
 ]
 
 if settings.DEBUG:

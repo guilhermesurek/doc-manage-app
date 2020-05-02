@@ -70,3 +70,19 @@ class Document(StdModel):
     class Meta:
         verbose_name = "Documento"
         verbose_name_plural = "Documentos"
+    
+    def to_dict_json(self):
+        return {
+            'name_sender': self.sender.fantasy_name,
+            'cnpj_sender': self.sender.cnpj,
+            'name_recipient': self.recipient.fantasy_name,
+            'cnpj_recipient': self.recipient.cnpj,
+            'document_type': self.document_type,
+            'document_number': self.document_number,
+            'document_key': self.document_key,
+            'document_date': self.document_date,
+            'document_total_value': self.document_total_value,
+            'document_status': self.document_status,
+            'document_file_name': self.doc_file.name,
+            'document_file_url': self.doc_file.url,
+        }
