@@ -3,54 +3,62 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" type="text/css" href="{% static 'initial/css/app.css' %}">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        {% block head_meta %}
+            {% block head_meta_charset %}
+                <meta http-equiv="Content-Type"
+                      content="text/html; charset=utf-8" />
+            {% endblock head_meta_charset %}
+            {% block head_meta_contentlanguage %}
+                <meta http-equiv="Content-Language" value="pt-br" />
+            {% endblock head_meta_contentlanguage %}
+            {% block head_meta_viewport %}
+                <meta name="viewport"
+                      content="width=device-width, initial-scale=1.0">
+            {% endblock head_meta_viewport %}
+        {% endblock head_meta %}
+        {% block head_favicon %}
+            <link rel="icon" type="image/png"
+                  href="{% static 'images/favicon.ico' %}">
+        {% endblock head_favicon %}
+        {% block head_css %}
+            {% block head_css_site %}
+              <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+              <link rel="stylesheet" type="text/css" href="{% static 'initial/css/app.css' %}">
+            {% endblock head_css_site %}
+            {% block head_css_section %}{% endblock head_css_section %}
+            {% block head_css_page %}{% endblock head_css_page %}
+        {% endblock head_css %}
         <title>{% block title %}Gestão Documental{% endblock %}</title>
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-light mb-4" style="background-color:#decdc3">
-          <div class="container">
-            <a class="navbar-brand" href="{% url 'home' %}">Gestão Documental</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'login' %}">Entrar</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'menu' %}">Menu</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'upload' %}">Upload</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="{% url 'download' %}">Download</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url 'logout' %}">Sair</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <div class="container">
-          <div class="row justify-content-center">
-            <div class="col-lg-10 col-md-12">
-              <div class="card mb-4">
-                <div class="card-body">
-                  {% block content %}
-                  {% endblock %}
-                </div>
+      <header>{% include 'navbar.html' %}</header>
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-md-12">
+            <div class="card mb-4">
+              <div class="card-body">
+                {% block content %}
+                {% endblock %}
               </div>
             </div>
           </div>
         </div>
-        <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-        {% block javascript %}
-        {% endblock %}
-      </body>
+      </div>
+      <div class="footer">
+        <div class="container" style="text-align: center;">
+            <p>Copyright Guilherme Surek</p>
+        </div>
+      </div>
+      {% block footer_javascript %}
+        {% block footer_javascript_site %}
+          <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+          <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+          <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        {% endblock footer_javascript_site %}
+        {% block footer_javascript_section %}{% endblock footer_javascript_section %}
+        {% block footer_javascript_page %}{% endblock footer_javascript_page %}
+      {% endblock footer_javascript %}
+    </body>
 </html>
