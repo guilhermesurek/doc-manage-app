@@ -14,9 +14,10 @@ class UploadView(View):
 
     def post(self, request):
         form = DocumentForm(request.POST, request.FILES)
+        form.data = read_xml_nfe_data(form.data, xml_nfe(dict_nfe=xmltodict.parse(form.files['doc_file'])))
         if form.is_valid():
             doc = form.save()
-            data = {'is_valid': True, 'name': doc.doc_file.name, 'url': doc.doc_file.url}
+            data = {'is_valid': True, 'docs': doc}
         else:
             data = {'is_valid': False}
         return JsonResponse(data)
