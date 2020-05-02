@@ -36,7 +36,7 @@ class Entity(StdModel):
         return self.fantasy_name
     
     def save(self, *args, **kwargs):
-        if self.fantasy_name == None:
+        if self.fantasy_name == None or self.fantasy_name == '':
             self.fantasy_name = self.company_name
         super(Entity, self).save(*args, **kwargs)
 

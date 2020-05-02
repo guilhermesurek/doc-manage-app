@@ -37,7 +37,10 @@ class xml_nfe:
         if res_dict["fantasy_name"] != None:
             res_dict["fantasy_name"] = res_dict["fantasy_name"].upper()
         else:
-            del res_dict["fantasy_name"]
+            if res_dict["company_name"] != None:
+                res_dict["fantasy_name"] = res_dict["company_name"].upper()
+            else:
+                del res_dict["fantasy_name"]
         if ent_type=="entrega":
             res_dict["address_name"]  = cast_dict.get(["nfeProc", "NFe", "infNFe", ent_type, "xLgr"])
         else:
