@@ -4,28 +4,39 @@
   Download
 {% endblock %}
 
+{% block head_css_page %}
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+{% endblock head_css_page %}
+
 {% block content %}
   <h2>Download de Documentos</h2>
     <div class="table-responsive-vertical shadow-z-1">
-      <table id="table" class="table table-hover table-mc-light-blue">
+      <table id="docTable" class="table table-hover table-mc-light-blue">
         <thead>
           <tr>
             <th>CNPJ emissor</th>
+            <th>Razão social emissor</th>
             <th>CNPJ destinatário</th>
+            <th>Razão social destinatário</th>
             <th>Número do documento</th>
             <th>Chave do documento</th>
             <th>Data de emissão</th>
+            <th>Valor Total</th>
             <th>Download</th>
           </tr>
         </thead>
         <tbody>
           {% for doc in docs %}
             <tr>
-              <td data-title="cnpj_sender">{{doc.cnpj_sender}}</td>
-              <td data-title="cnpj_recipient">{{doc.cnpj_recipient}}</td>
+              <td data-title="cnpj_sender">{{doc.sender.cnpj}}</td>
+              <td data-title="cnpj_sender">{{doc.sender.fantasy_name}}</td>
+              <td data-title="cnpj_recipient">{{doc.recipient.cnpj}}</td>
+              <td data-title="cnpj_sender">{{doc.recipient.fantasy_name}}</td>
               <td data-title="document_number">{{doc.document_number}}</td>
               <td data-title="document_key">{{doc.document_key}}</td>
               <td data-title="document_date">{{doc.document_date}}</td>
+              <td data-title="document_date">{{doc.document_total_value}}</td>
               <td>
                 <a href="{{ doc.doc_file.url }}" class="btn btn-primary btn-sm" target="_blank">
                   Download
@@ -38,3 +49,7 @@
     </div>
 
 {% endblock %}
+{% block footer_javascript_page %}
+  <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+{% endblock footer_javascript_page %}
