@@ -1,7 +1,7 @@
 $(document).ready( function () {
     $('#docTable').DataTable({
-      "processing": true,
-      "serverSide": true,
+      //"processing": true,
+      //"serverSide": true,
       "ajax": "/document/json/",
       "columns": [
         {"data": "name_sender"},
