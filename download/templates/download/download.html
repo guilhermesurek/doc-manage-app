@@ -11,6 +11,17 @@
 
 {% block content %}
   <h2>Download de Documentos</h2>
+    <div>
+      <form action="" method="post">
+        {% csrf_token %}
+        <input name="cnpj_sender" type="text" placeholder="CNPJ Emissor">
+        <input name="cnpj_recipient" type="text" placeholder="CNPJ Destinatario">
+        <input name="document_key" type="text" placeholder="Chave de Acesso">
+        <input name="document_date_min" type="date" placeholder="Data do Documento Min">
+        <input name="document_date_max" type="date" placeholder="Data do Documento Max">
+        <button type="submit" type="submit" value="Pesquisar">Pesquisar</button>
+      </form>
+    </div>
     <div class="table-responsive-vertical shadow-z-1">
       <table id="docTable" class="table table-hover table-mc-light-blue">
         <thead>
